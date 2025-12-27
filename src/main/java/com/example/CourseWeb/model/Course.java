@@ -1,7 +1,7 @@
 package com.example.CourseWeb.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,14 +19,29 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer courseId;
 
-    @NotBlank
+    @NotBlank(message = "Course Name cannot be blank")
+    @Column(nullable = false)
     String courseName;
+
+    @NotBlank(message = "Description cannot be blank")
+    @Size(min = 20, max = 1000,
+            message = "Description cannot be less than " +
+                    "20 characters and more than 1000 characters")
     @Column(nullable = false)
     String courseDescription;
+
     String tags;
+
+    @Min(1)
+    @Max(2000)
     Integer duration;
+
+    @PastOrPresent
     @Column(nullable = false)
     LocalDate listedOn;
+
+    @Min(0)
+    @Max(200000)
     @Column(nullable = false)
     Double price;
 }
