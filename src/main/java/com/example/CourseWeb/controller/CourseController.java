@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
+
 @RestController
 @RequestMapping("/courses")
 @CrossOrigin("http://localhost:5173")
