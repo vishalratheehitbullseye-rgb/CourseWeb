@@ -3,10 +3,7 @@ package com.example.CourseWeb.controller;
 import com.example.CourseWeb.model.Course;
 import com.example.CourseWeb.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +20,12 @@ public class CourseController {
 
     @GetMapping("/{courseId}")
     public Course getCourseBycourseId(@PathVariable Integer courseId){
-        return courseService.getCourseBycourseId();
+        return courseService.getCourseBycourseId(courseId);
+    }
+
+    @PostMapping("/")
+    public Course saveCourse(@RequestBody Course newCourse){
+        return courseService.saveCourse(newCourse);
     }
 
 }

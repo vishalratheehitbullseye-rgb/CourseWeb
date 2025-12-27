@@ -15,4 +15,12 @@ public class CourseService {
     public List<Course> getAllCourses() {
         return courseRepo.findAll();
     }
+
+    public Course getCourseBycourseId(Integer courseId) {
+        return courseRepo.getCourseByCourseId(courseId);
+    }
+
+    public Course saveCourse(Course newCourse) {
+        return courseRepo.save(newCourse);
+    }
 }
